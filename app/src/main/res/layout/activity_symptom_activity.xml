@@ -13,17 +13,17 @@
         android:layout_height="60dp"
         android:layout_marginTop="44dp"
 
-        android:onClick="onClickStart"
-
-        android:text="@string/begin"
         android:background="@drawable/buttonback2"
+
+        android:elevation="5dp"
+        android:onClick="onClickStart"
+        android:text="@string/begin"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title2Text"
-        android:elevation="5dp"
 
-        />
+        app:layout_constraintTop_toBottomOf="@+id/title2Text" />
 
     <TextView
         android:id="@+id/textView"
@@ -44,12 +44,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        />
 
     <TextView
         android:id="@+id/title2Text"
-        android:layout_width="385dp"
-        android:layout_height="189dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
 
         android:gravity="center"
