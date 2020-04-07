@@ -13,6 +13,8 @@ import android.widget.Toast;
 //import android.support.v7.widget.LinearLayoutManager;
 //import android.support.v7.widget.RecyclerView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,32 +34,6 @@ public class about extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.home_page_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.lang_togg_butt) {
-            Toast.makeText(about.this, "Language Changed", Toast.LENGTH_SHORT).show();
-
-
-        } else if (id == R.id.Survey) {
-            Intent i = new Intent(about.this, Male_Female.class);
-            startActivity(i);
-        } else if (id == R.id.developers) {
-            Intent i = new Intent(about.this, about.class);
-            startActivity(i);
-        } else if (id == R.id.privacy_policy) {
-            Intent i = new Intent(about.this, privacy_policy.class);
-            startActivity(i);
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,13 +43,15 @@ public class about extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
         imageModelArrayList = eatFruits();
         adapter = new AboutAdapter(this, imageModelArrayList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,0));
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
     }
 
     private ArrayList<AboutModel> eatFruits() {
-        String tempo = getResources().getString(R.string.link_test);
-        Log.d("link_test", tempo);
+
         /*
         int[] myImageList = new int[]{R.drawable.kanav_image, R.drawable.rohan_image,R.drawable.vaibhav_image};
         String[] NameList = new String[]{"Kanav Bhagat","Rohan Pandey" ,"Vaibhav Gautam"};
@@ -82,19 +60,19 @@ public class about extends AppCompatActivity {
         String[] TwitterList=new String[]{"Twitter\nhttps://mobile.twitter.com/BhagatKanav","Twitter\nhttps://twitter.com/therohanpandey1","Twitter\nhttps://twitter.com/VAIBHAVGAUTAM13"};
         String[] EmailList=new String[]{"Email\nkanav16046@iiitd.ac.in","Email\nrohan99pandey@gmail.com","Email\nvg459@snu.edu.in"};
         */
-        int[] myImageList = new int[]{R.drawable.logo, R.drawable.tavsir, R.drawable.kanav_image, R.drawable.rohan_image, R.drawable.vaibhav_image, R.drawable.himanshu};
-        String[] NameList = new String[]{"TAVLAB", "Dr. Tavpritesh Sethi(Mentor)", "Kanav Bhagat(Developer)", "Rohan Pandey(Developer)", "Vaibhav Gautam(Developer)", "Himanshu Sharma (Developer)"};
-        String[] GithubList = new String[]{"Email\ntavlabiiitd@gmail.com", "LinkedIn\nhttps://www.linkedin.com/in/tavpritesh/", "Github\nhttps://github.com/kanavbhagat", "Github\nhttps://github.com/rohanpandey", "Github\nhttps://github.com/VAICR7BHAV", "Github\nhttps://github.com/hspandit"};
-        String[] LinkedInList = new String[]{"Website\nhttps://tavlab.iiitd.edu.in/", "Twitter\nhttps://twitter.com/Tavpritesh", "LinkedIn\nhttp://linkedin.com/in/kanav-bhagat-133229130", "LinkedIn\nhttps://www.linkedin.com/in/rohan-pandey-145170175/", "LinkedIn\nhttps://www.linkedin.com/in/vaibhav-gautam-171775187/", "LinkedIn\nhttps://www.linkedin.com/in/himanshu-sharma2950/"};
-        String[] TwitterList = new String[]{"Github\nhttps://github.com/tavlab-iiitd", "Email\ntavpriteshsethi@iiitd.ac.in", "Twitter\nhttps://mobile.twitter.com/BhagatKanav", "Twitter\nhttps://twitter.com/therohanpandey1", "Twitter\nhttps://twitter.com/VAIBHAVGAUTAM13", "Twitter\nhttps://twitter.com/himanshu9132"};
-        String[] EmailList = new String[]{"", "", "Email\nkanav16046@iiitd.ac.in", "Email\nrohan99pandey@gmail.com", "Email\nvg459@snu.edu.in", "Email\n 0hspandit0@gmail.com"};
+        //int[] myImageList = new int[]{R.drawable.logo, R.drawable.tavsir, R.drawable.kanav_image, R.drawable.rohan_image, R.drawable.vaibhav_image, R.drawable.himanshu};
+        String[] NameList = new String[]{"TAVLAB", "Dr. Tavpritesh Sethi\n(Mentor)", "Rohan Pandey\n(Developer)", "Vaibhav Gautam\n(Developer)", "Himanshu Sharma\n(Developer)", "Kanav Bhagat\n(Developer)"};
+        String[] GithubList = new String[]{"https://github.com/tavlab-iiitd", "https://www.google.com", "https://github.com/rohanpandey", "https://github.com/VAICR7BHAV", "https://github.com/hspandit", "https://github.com/kanavbhagat"};
+        String[] LinkedInList = new String[]{"https://tavlab.iiitd.edu.in/", "https://www.linkedin.com/in/tavpritesh/", "https://www.linkedin.com/in/rohan-pandey-145170175/", "https://www.linkedin.com/in/vaibhav-gautam-171775187/", "https://www.linkedin.com/in/himanshu-sharma2950/", "http://linkedin.com/in/kanav-bhagat-133229130"};
+        String[] TwitterList = new String[]{"https://www.google.com", "https://mobile.twitter.com/Tavpritesh", "https://mobile.twitter.com/therohanpandey1", "https://mobile.twitter.com/VAIBHAVGAUTAM13", "https://mobile.twitter.com/himanshu9132", "https://mobile.twitter.com/BhagatKanav"};
+        String[] EmailList = new String[]{"Email\ntavlabiiitd@gmail.com", "Email\ntavpriteshsethi@iiitd.ac.in", "Email\nrohan99pandey@gmail.com", "Email\nvg459@snu.edu.in", "Email\n 0hspandit0@gmail.com", "Email\nkanav16046@iiitd.ac.in"};
 
 
         ArrayList<AboutModel> list = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < NameList.length; i++) {
             AboutModel fruitModel = new AboutModel();
             fruitModel.setName(NameList[i]);
-            fruitModel.setImage_drawable(myImageList[i]);
+            //fruitModel.setImage_drawable(myImageList[i]);
             fruitModel.setEmail(EmailList[i]);
             fruitModel.setGithub(GithubList[i]);
             fruitModel.setLinkedin(LinkedInList[i]);
